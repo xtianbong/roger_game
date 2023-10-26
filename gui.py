@@ -5,7 +5,8 @@ import csv
 import datetime
 import os
 import pygame
-
+from PIL import Image, ImageTk  
+#perhaps for the final version the numbers should be represented with pictures of animals to make it more intuitive?
 class GameApp:
     def __init__(self, root):
         self.root = root
@@ -16,12 +17,37 @@ class GameApp:
         self.score = 0
         self.highest_score = self.get_highest_score()
         
-        self.target_number = None
+        self.target_number = random.randint(1, 3)
         self.game_over = False  # To track whether the game is over
         self.flash_duration = 500  # 500 milliseconds (0.5 seconds)
         
         if not os.path.isfile('scores.csv'):
             self.create_scores_file()
+
+        
+        # load the image and create a PhotoImage object
+        self.birdImg = Image.open("img/bird.png").convert("RGBA")
+        self.mouseImg = Image.open("img/mouse.png").convert("RGBA")
+        self.spiderImg = Image.open("img/spider.png").convert("RGBA")
+        self.birdImg = self.birdImg.resize((150, 150))
+        self.mouseImg = self.mouseImg.resize((150, 150))
+        self.spiderImg = self.spiderImg.resize((150, 150))
+
+        #choose image based on the target number
+        if self.target_number == 1:
+            self.photo = ImageTk.PhotoImage(self.spiderImg)
+        if self.target_number == 2:
+            self.photo = ImageTk.PhotoImage(self.birdImg)
+        if self.target_number == 3:
+            self.photo = ImageTk.PhotoImage(self.mouseImg)
+
+        # create a label to display the image 
+        self.image_label = tk.Label(root, image=self.photo)
+        self.image_label.pack()
+        self.image_label.place(x=125, y=150)
+
+        self.update_image()  # Initial image update
+        
 
         self.target_label = tk.Label(root, text="", font=("Arial", 36))
         self.target_label.pack()
@@ -52,7 +78,22 @@ class GameApp:
     def next_round(self):
         if not self.game_over:
             self.target_number = random.randint(1, 3)
+            self.update_image()
             self.target_label.config(text="" + str(self.target_number))
+
+    def update_image(self):
+        if self.target_number == 1:
+            image = ImageTk.PhotoImage(self.spiderImg)
+        elif self.target_number == 2:
+            image = ImageTk.PhotoImage(self.birdImg)
+        elif self.target_number == 3:
+            image = ImageTk.PhotoImage(self.mouseImg)
+        else:
+            image = ImageTk.PhotoImage(self.mouseImg) #default image
+
+        self.image_label.configure(image=image)
+        self.image_label.image = image  # Keep a reference to avoid garbage collection
+
         
     def check_number(self, pressed_number):
         if not self.game_over:
