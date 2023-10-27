@@ -42,7 +42,7 @@ class GameApp:
             self.photo = ImageTk.PhotoImage(self.mouseImg)
 
         # create a label to display the image 
-        self.image_label = tk.Label(root, image=self.photo)
+        self.image_label = tk.Label(root, image=self.photo,bg="SystemButtonFace")
         self.image_label.pack()
         self.image_label.place(x=125, y=150)
 
@@ -92,6 +92,7 @@ class GameApp:
             image = ImageTk.PhotoImage(self.mouseImg) #default image
 
         self.image_label.configure(image=image)
+        self.image_label.configure(bg="SystemButtonFace")
         self.image_label.image = image  # Keep a reference to avoid garbage collection
 
         
@@ -130,16 +131,18 @@ class GameApp:
         self.target_label.configure(bg=color)
         self.score_label.configure(bg=color)
         self.high_score_label.configure(bg=color)
+        self.image_label.configure(bg=color)
         self.root.update()
         if color == "green":
             self.root.after(self.flash_duration, self.reset_background)
     
     def reset_background(self):
-        # Reset the background color to white
-        self.root.configure(bg="white")
-        self.target_label.configure(bg="white")
-        self.score_label.configure(bg="white")
-        self.high_score_label.configure(bg="white")
+        # Reset the background color to SystemButtonFace
+        self.root.configure(bg="SystemButtonFace")
+        self.target_label.configure(bg="SystemButtonFace")
+        self.score_label.configure(bg="SystemButtonFace")
+        self.high_score_label.configure(bg="SystemButtonFace")
+        self.image_label.configure(bg="SystemButtonFace")
 
     def save_score(self, score):
         now = datetime.datetime.now()
