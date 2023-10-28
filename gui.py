@@ -82,6 +82,7 @@ class GameApp:
 
         pygame.mixer.init()  # Initialize the mixer for sound effects
 
+        self.check_gpio()
         self.next_round()
         self.bind_keys_to_buttons()  # Call the function to bind keys to buttons
 
@@ -90,10 +91,12 @@ class GameApp:
             self.root.bind(key, lambda event, b=button: b.invoke())
 
     def check_gpio(self):
-        button_states = [GPIO.input(pin) for pin in pins]
+        while not self.game_over:
+            button_states = [GPIO.input(pin) for pin in pins]
 
-        for i, state in enumerate(button_states):
-            self.check_number(i+1)
+            for i, state in enumerate(button_states):
+                self.check_number(i+1)
+                time.sleep(0.01)  # Poll every 10 ms
 
     def next_round(self):
         if not self.game_over:
