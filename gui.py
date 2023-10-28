@@ -85,7 +85,7 @@ class GameApp:
         # Set up GPIO event detection for button presses
         for pin in pins:
             GPIO.setup(pin, GPIO.IN)
-            GPIO.add_event_detect(pin, GPIO.RISING, callback=self.handle_button_press, bouncetime=200)
+            GPIO.add_event_detect(pin, GPIO.FALLING, callback=self.handle_button_press, bouncetime=200)
 
         
         self.next_round()
