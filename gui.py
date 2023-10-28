@@ -17,11 +17,14 @@ pins = [16, 20, 21]
 for pin in pins:
     GPIO.setup(pin, GPIO.IN)
 
+bg_color = "#D3D3D3"
+
 class GameApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Number Game")
         self.root.geometry("400x500")  # Set the window size
+        
         
         
         self.key_mapping = {1: '1', 2: '2', 3: '3'}
@@ -53,7 +56,7 @@ class GameApp:
             self.photo = ImageTk.PhotoImage(self.mouseImg)
 
         # create a label to display the image 
-        self.image_label = tk.Label(root, image=self.photo,bg="SystemButtonFace")
+        self.image_label = tk.Label(root, image=self.photo,bg=bg_color)
         self.image_label.pack()
         self.image_label.place(x=125, y=150)
 
@@ -109,7 +112,7 @@ class GameApp:
             image = ImageTk.PhotoImage(self.mouseImg) #default image
 
         self.image_label.configure(image=image)
-        self.image_label.configure(bg="SystemButtonFace")
+        self.image_label.configure(bg=bg_color)
         self.image_label.image = image  # Keep a reference to avoid garbage collection
 
         
@@ -155,11 +158,11 @@ class GameApp:
     
     def reset_background(self):
         # Reset the background color to SystemButtonFace
-        self.root.configure(bg="SystemButtonFace")
-        self.target_label.configure(bg="SystemButtonFace")
-        self.score_label.configure(bg="SystemButtonFace")
-        self.high_score_label.configure(bg="SystemButtonFace")
-        self.image_label.configure(bg="SystemButtonFace")
+        self.root.configure(bg=bg_color)
+        self.target_label.configure(bg=bg_color)
+        self.score_label.configure(bg=bg_color)
+        self.high_score_label.configure(bg=bg_color)
+        self.image_label.configure(bg=bg_color)
 
     def save_score(self, score):
         now = datetime.datetime.now()
@@ -194,10 +197,10 @@ class GameApp:
         self.game_over_label.pack()
 
     def reset_game(self, event):
-        self.root.configure(bg="SystemButtonFace")  # Revert the background to white
-        self.target_label.configure(bg="SystemButtonFace")
-        self.score_label.configure(bg="SystemButtonFace")
-        self.high_score_label.configure(bg="SystemButtonFace")
+        self.root.configure(bg=bg_color)  # Revert the background to white
+        self.target_label.configure(bg=bg_color)
+        self.score_label.configure(bg=bg_color)
+        self.high_score_label.configure(bg=bg_color)
         self.game_over = False
         self.target_label.pack()  # Show the game screen
         self.button_frame.pack()
