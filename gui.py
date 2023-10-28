@@ -5,13 +5,24 @@ import csv
 import datetime
 import os
 import pygame
+import RPi.GPIO as GPIO
+
 from PIL import Image, ImageTk  
-#perhaps for the final version the numbers should be represented with pictures of animals to make it more intuitive?
+
+
+# set up gpio pins
+GPIO.setmode(GPIO.BCM)
+pins = [16, 20, 21]
+
+for pin in pins:
+    GPIO.setup(pin, GPIO.IN)
+
 class GameApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Number Game")
         self.root.geometry("400x500")  # Set the window size
+        
         
         self.key_mapping = {1: '1', 2: '2', 3: '3'}
         self.score = 0
@@ -74,6 +85,12 @@ class GameApp:
     def bind_keys_to_buttons(self):
         for key, button in zip(self.key_mapping.values(), self.button_frame.winfo_children()):
             self.root.bind(key, lambda event, b=button: b.invoke())
+
+    def check_gpio(self):
+        button_states = [GPIO.input(pin) for pin in pins]
+
+        for i, state in enumerate(button_states):
+            self.check_number(i+1)
 
     def next_round(self):
         if not self.game_over:
@@ -198,4 +215,3 @@ if __name__ == "__main__":
     app = GameApp(root)
     root.bind("<Key>", app.reset_game)  # Bind the reset function to the space key
     root.mainloop()
-    

@@ -5,7 +5,7 @@ import time
 GPIO.setmode(GPIO.BCM)
 pins = [16, 20, 21]
 
-# Set the pins as inputs
+# Set the pins as inputsxs
 for pin in pins:
     GPIO.setup(pin, GPIO.IN)
 
