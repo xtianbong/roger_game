@@ -84,7 +84,7 @@ class GameApp:
 
         
         self.next_round()
-        self.check_gpio()
+        
         self.bind_keys_to_buttons()  # Call the function to bind keys to buttons
 
     def bind_keys_to_buttons(self):
@@ -105,6 +105,7 @@ class GameApp:
             self.target_number = random.randint(1, 3)
             self.update_image()
             self.target_label.config(text="" + str(self.target_number))
+            self.check_gpio()
 
     def update_image(self):
         if self.target_number == 1:
