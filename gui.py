@@ -82,7 +82,7 @@ class GameApp:
 
         pygame.mixer.init()  # Initialize the mixer for sound effects
 
-        # Set up GPIO event detection for button presses
+        # Set up GPIO event detection for button presses 42
         for pin in pins:
             GPIO.setup(pin, GPIO.IN)
             GPIO.add_event_detect(pin, GPIO.FALLING, callback=self.handle_button_press, bouncetime=200)
