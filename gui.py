@@ -63,7 +63,7 @@ class GameApp:
             button["command"] = lambda i=i: self.check_number(i)
             button.grid(row=0, column=i-1)
 
-        self.game_over_label = tk.Label(root, text="", font=("Arial", 20))
+        self.game_over_label = tk.Label(root, text="", font=("Arial", 20),borderwidth=3 , relief="solid",padx=5)
         self.high_score_label = tk.Label(root, text="", font=("Arial", 16))
 
         pygame.mixer.init()  # Initialize the mixer for sound effects
@@ -177,10 +177,10 @@ class GameApp:
         self.game_over_label.pack()
 
     def reset_game(self, event):
-        self.root.configure(bg="white")  # Revert the background to white
-        self.target_label.configure(bg="white")
-        self.score_label.configure(bg="white")
-        self.high_score_label.configure(bg="white")
+        self.root.configure(bg="SystemButtonFace")  # Revert the background to white
+        self.target_label.configure(bg="SystemButtonFace")
+        self.score_label.configure(bg="SystemButtonFace")
+        self.high_score_label.configure(bg="SystemButtonFace")
         self.game_over = False
         self.target_label.pack()  # Show the game screen
         self.button_frame.pack()
@@ -198,3 +198,4 @@ if __name__ == "__main__":
     app = GameApp(root)
     root.bind("<Key>", app.reset_game)  # Bind the reset function to the space key
     root.mainloop()
+    
