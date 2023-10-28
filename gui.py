@@ -82,8 +82,9 @@ class GameApp:
 
         pygame.mixer.init()  # Initialize the mixer for sound effects
 
-        self.check_gpio()
+        
         self.next_round()
+        self.check_gpio()
         self.bind_keys_to_buttons()  # Call the function to bind keys to buttons
 
     def bind_keys_to_buttons(self):
