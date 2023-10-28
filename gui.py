@@ -95,8 +95,9 @@ class GameApp:
             button_states = [GPIO.input(pin) for pin in pins]
 
             for i, state in enumerate(button_states):
-                self.check_number(i+1)
-                time.sleep(0.01)  # Poll every 10 ms
+                if state == 1:
+                    self.check_number(i + 1)
+
 
     def next_round(self):
         if not self.game_over:
