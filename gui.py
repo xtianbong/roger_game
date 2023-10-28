@@ -82,22 +82,23 @@ class GameApp:
 
         pygame.mixer.init()  # Initialize the mixer for sound effects
 
+        # Set up GPIO event detection for button presses
+        for pin in pins:
+            GPIO.setup(pin, GPIO.IN)
+            GPIO.add_event_detect(pin, GPIO.RISING, callback=self.handle_button_press, bouncetime=200)
+
         
         self.next_round()
-        self.check_gpio()
         self.bind_keys_to_buttons()  # Call the function to bind keys to buttons
 
     def bind_keys_to_buttons(self):
         for key, button in zip(self.key_mapping.values(), self.button_frame.winfo_children()):
             self.root.bind(key, lambda event, b=button: b.invoke())
 
-    def check_gpio(self):
-        while not self.game_over:
-            button_states = [GPIO.input(pin) for pin in pins]
-
-            for i, state in enumerate(button_states):
-                if state == 1:
-                    self.check_number(i + 1)
+    def handle_button_press(self, channel):
+        if not self.game_over:
+            button_number = pins.index(channel) + 1
+            self.check_number(button_number)
 
 
     def next_round(self):
