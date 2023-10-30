@@ -100,6 +100,7 @@ class GameApp:
             button_number = pins.index(channel) + 1
             print(button_number)
             self.check_number(button_number)
+            time.sleep(1.5)
 
 
     def next_round(self):
