@@ -229,5 +229,5 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = GameApp(root)
     root.bind("<space>", app.reset_game)  # Bind the reset function to the space key
-    root.bind("<escape>",app.close_game)
+    root.bind("<Escape>",app.close_game)
     root.mainloop()
