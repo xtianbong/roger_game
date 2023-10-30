@@ -7,6 +7,8 @@ import os
 import pygame
 import RPi.GPIO as GPIO
 
+from servo import half_spin
+
 from PIL import Image, ImageTk  
 
 
