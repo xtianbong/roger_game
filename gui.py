@@ -129,11 +129,14 @@ class GameApp:
                 self.flash_screen_and_labels("green")  # Flash green for correct answer
                 self.root.after(self.flash_duration, self.next_round)  # Start a new round after flashing
                 self.play_sound_effect("sfx/success/1.mp3")
+                print(self.score)
                 #reward player at 500 points
                 if self.score >= 500:
                     #servo spins 180 all at once, and then inches back into position
                     half_spin()
+                    print("Feeding time")
                     time.sleep(20)
+                    print("Feeding time over")
             else:
                 if self.score > self.highest_score:
                     self.highest_score = self.score
