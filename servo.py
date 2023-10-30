@@ -15,17 +15,17 @@ def set_angle(angle):
     pwm.ChangeDutyCycle(duty_cycle)
     time.sleep(0.5)  # Allow time for the servo to move
 
-def full_spin():
+def half_spin():
     
     try:
         pwm.start(0)  # Start PWM with a duty cycle of 0 (servo at 0 degrees)
         while True:
-            # Rotate the servo 360 degrees continuously
+            # Rotate the servo 180 degrees continuously
             for angle in range(0, 361, 10):
                 set_angle(angle)
     except KeyboardInterrupt:
         pwm.stop()
         GPIO.cleanup()
 
-full_spin()
+half_spin() #testing
 GPIO.cleanup()
