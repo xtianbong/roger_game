@@ -19,10 +19,7 @@ def full_spin():
     
     try:
         pwm.start(0)  # Start PWM with a duty cycle of 0 (servo at 0 degrees)
-        while True:
-            # Rotate the servo from 0 to 360 degrees
-            for angle in range(0, 360, 10):
-                set_angle(angle)
+        set_angle(360)
 
     except KeyboardInterrupt:
         # Exit the program when Ctrl+C is pressed
