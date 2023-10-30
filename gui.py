@@ -32,7 +32,7 @@ class GameApp:
         self.highest_score = self.get_highest_score()
         
         self.target_number = random.randint(1, 2)
-        self.game_over = False  # To track whether the game is over
+        self.game_over = False  # To track whether the game is over 
         self.flash_duration = 500  # 500 milliseconds (0.5 seconds)
         
         if not os.path.isfile('scores.csv'):
