@@ -10,7 +10,7 @@ import RPi.GPIO as GPIO
 from PIL import Image, ImageTk  
 
 
-# set up gpio pins
+# set up gpio pins 
 GPIO.setmode(GPIO.BCM)
 pins = [13, 19, 26]
 
