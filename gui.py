@@ -133,6 +133,7 @@ class GameApp:
                 if self.score >= 500:
                     #servo spins 180 all at once, and then inches back into position
                     half_spin()
+                    time.sleep(20)
             else:
                 if self.score > self.highest_score:
                     self.highest_score = self.score
