@@ -27,5 +27,5 @@ def half_spin():
         pwm.stop()
         GPIO.cleanup()
 
-half_spin() #testing
+#half_spin() #testing
 GPIO.cleanup()
