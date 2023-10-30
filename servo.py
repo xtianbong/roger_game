@@ -19,7 +19,7 @@ def full_spin():
     
     try:
         pwm.start(0)  # Start PWM with a duty cycle of 0 (servo at 0 degrees)
-        set_angle(360)
+        set_angle(359)
 
     except KeyboardInterrupt:
         # Exit the program when Ctrl+C is pressed
