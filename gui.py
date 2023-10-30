@@ -31,7 +31,7 @@ class GameApp:
         self.score = 0
         self.highest_score = self.get_highest_score()
         
-        self.target_number = random.randint(1, 3)
+        self.target_number = random.randint(1, 2)
         self.game_over = False  # To track whether the game is over
         self.flash_duration = 500  # 500 milliseconds (0.5 seconds)
         
@@ -49,10 +49,8 @@ class GameApp:
 
         #choose image based on the target number
         if self.target_number == 1:
-            self.photo = ImageTk.PhotoImage(self.spiderImg)
-        if self.target_number == 2:
             self.photo = ImageTk.PhotoImage(self.birdImg)
-        if self.target_number == 3:
+        if self.target_number == 2:
             self.photo = ImageTk.PhotoImage(self.mouseImg)
 
         # create a label to display the image 
@@ -104,16 +102,14 @@ class GameApp:
 
     def next_round(self):
         if not self.game_over:
-            self.target_number = random.randint(1, 3)
+            self.target_number = random.randint(1, 2)
             self.update_image()
             self.target_label.config(text="" + str(self.target_number))
 
     def update_image(self):
         if self.target_number == 1:
-            image = ImageTk.PhotoImage(self.spiderImg)
-        elif self.target_number == 2:
             image = ImageTk.PhotoImage(self.birdImg)
-        elif self.target_number == 3:
+        elif self.target_number == 2:
             image = ImageTk.PhotoImage(self.mouseImg)
         else:
             image = ImageTk.PhotoImage(self.mouseImg) #default image
