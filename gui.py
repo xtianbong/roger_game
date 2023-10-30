@@ -98,7 +98,7 @@ class GameApp:
     def handle_button_press(self, channel):
         if not self.game_over:
             button_number = pins.index(channel) + 1
-            print(button_number)
+            print(button_number,channel)
             self.check_number(button_number)
             time.sleep(3)
 
