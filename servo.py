@@ -19,10 +19,10 @@ def half_spin():
     
     try:
         pwm.start(0)  # Start PWM with a duty cycle of 0 (servo at 0 degrees)
+        angle = 0
         while angle<180:
-            # Rotate the servo 180 degrees continuously
-            for angle in range(0, 181, 10):
-                set_angle(angle)
+            set_angle(angle)
+            angle+=10
     except KeyboardInterrupt:
         pwm.stop()
         GPIO.cleanup()
