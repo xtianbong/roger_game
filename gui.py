@@ -132,11 +132,7 @@ class GameApp:
                 print(self.score)
                 #reward player at 500 points
                 if self.score >= 500:
-                    #servo spins 180 all at once, and then inches back into position
-                    half_spin()
-                    print("Feeding time")
-                    time.sleep(20)
-                    print("Feeding time over")
+                    self.victory()
             else:
                 if self.score > self.highest_score:
                     self.highest_score = self.score
@@ -225,6 +221,14 @@ class GameApp:
     def play_sound_effect(self, sound_file):
         pygame.mixer.music.load(sound_file)
         pygame.mixer.music.play()
+
+    def victory(self):
+        #servo spins 180 all at once, and then inches back into position
+        self.play_sound_effect("sfx/success/1.mp3")
+        half_spin()
+        print("Feeding time")
+        time.sleep(20)
+        print("Feeding time over")
 
     def close_game(self,event):
         self.root.destroy()
