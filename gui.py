@@ -219,6 +219,9 @@ class GameApp:
         pygame.mixer.music.load(sound_file)
         pygame.mixer.music.play()
 
+    def close_game(self,event):
+        self.root.destroy()
+
 if __name__ == "__main__":
     root = tk.Tk()
     app = GameApp(root)
