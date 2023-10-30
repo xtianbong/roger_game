@@ -10,7 +10,7 @@ import RPi.GPIO as GPIO
 from PIL import Image, ImageTk  
 
 
-# set up gpio pins 
+# set up gpio pins
 GPIO.setmode(GPIO.BCM)
 pins = [13, 19, 26]
 
@@ -31,7 +31,7 @@ class GameApp:
         self.score = 0
         self.highest_score = self.get_highest_score()
         
-        self.target_number =  1#random.randint(2, 3)
+        self.target_number = random.randint(1, 3)
         self.game_over = False  # To track whether the game is over
         self.flash_duration = 500  # 500 milliseconds (0.5 seconds)
         
@@ -85,7 +85,7 @@ class GameApp:
         # Set up GPIO event detection for button presses 42
         for pin in pins:
             GPIO.setup(pin, GPIO.IN)
-            GPIO.add_event_detect(pin, GPIO.FALLING, callback=self.handle_button_press, bouncetime=1000)
+            GPIO.add_event_detect(pin, GPIO.FALLING, callback=self.handle_button_press, bouncetime=200)
 
         
         self.next_round()
@@ -98,14 +98,12 @@ class GameApp:
     def handle_button_press(self, channel):
         if not self.game_over:
             button_number = pins.index(channel) + 1
-            print(button_number,channel)
             self.check_number(button_number)
-            time.sleep(3)
 
 
     def next_round(self):
         if not self.game_over:
-            self.target_number = 1#random.randint(2, 3)
+            self.target_number = random.randint(1, 3)
             self.update_image()
             self.target_label.config(text="" + str(self.target_number))
 
@@ -220,10 +218,6 @@ class GameApp:
     def play_sound_effect(self, sound_file):
         pygame.mixer.music.load(sound_file)
         pygame.mixer.music.play()
-
-    def close_game(self,event):
-        self.root.destroy()
-
 
 if __name__ == "__main__":
     root = tk.Tk()
