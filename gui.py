@@ -221,8 +221,13 @@ class GameApp:
         pygame.mixer.music.load(sound_file)
         pygame.mixer.music.play()
 
+    def close_game(self,event):
+        self.root.destroy()
+
+
 if __name__ == "__main__":
     root = tk.Tk()
     app = GameApp(root)
-    root.bind("<Key>", app.reset_game)  # Bind the reset function to the space key
+    root.bind("<Space>", app.reset_game)  # Bind the reset function to the space key
+    root.bind("<Escape>",app.close_game)
     root.mainloop()
