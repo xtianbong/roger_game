@@ -12,7 +12,7 @@ from PIL import Image, ImageTk
 
 # set up gpio pins
 GPIO.setmode(GPIO.BCM)
-pins = [16, 20, 21]
+pins = [13, 19, 26]
 
 for pin in pins:
     GPIO.setup(pin, GPIO.IN)
@@ -31,7 +31,7 @@ class GameApp:
         self.score = 0
         self.highest_score = self.get_highest_score()
         
-        self.target_number =  3 #random.randint(1, 3)
+        self.target_number =  random.randint(2, 3)
         self.game_over = False  # To track whether the game is over
         self.flash_duration = 500  # 500 milliseconds (0.5 seconds)
         
@@ -105,7 +105,7 @@ class GameApp:
 
     def next_round(self):
         if not self.game_over:
-            self.target_number = 3 #random.randint(1, 3)
+            self.target_number = random.randint(2, 3)
             self.update_image()
             self.target_label.config(text="" + str(self.target_number))
 

@@ -3,7 +3,7 @@ import time
 
 # Set the GPIO mode and pins
 GPIO.setmode(GPIO.BCM)
-pins = [16, 20, 21]
+pins = [13, 19, 26]
 
 # Set the pins as inputsxs
 for pin in pins:
