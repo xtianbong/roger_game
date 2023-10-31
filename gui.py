@@ -131,7 +131,7 @@ class GameApp:
                 self.play_sound_effect("sfx/success/1.mp3")
                 print(self.score)
                 #reward player at 500 points
-                if self.score >= 500:
+                if self.score == 5*100:
                     self.victory()
             else:
                 if self.score > self.highest_score:
