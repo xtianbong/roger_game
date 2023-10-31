@@ -224,7 +224,7 @@ class GameApp:
 
     def victory(self):
         #servo spins 180 all at once, and then inches back into position
-        self.play_sound_effect("sfx/success/1.mp3")
+        self.play_sound_effect("sfx/fanfare/1.mp3")
         half_spin()
         print("Feeding time")
         time.sleep(20)
