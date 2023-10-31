@@ -232,8 +232,6 @@ class GameApp:
         self.play_sound_effect("sfx/fanfare/1.mp3")
         half_spin()
         print("Feeding time")
-        time.sleep(20)
-        print("Feeding time over")
 
     def close_game(self,event):
         self.root.destroy()
