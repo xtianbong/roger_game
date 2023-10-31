@@ -12,9 +12,14 @@ from servo import half_spin
 from PIL import Image, ImageTk  
 
 
-# set up gpio pins
+# set up button gpio pins
 GPIO.setmode(GPIO.BCM)
 pins = [13, 19, 26]
+
+# servo gpio
+servo_pin = 22 
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(servo_pin, GPIO.OUT)
 
 for pin in pins:
     GPIO.setup(pin, GPIO.IN)
