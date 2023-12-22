@@ -16,19 +16,19 @@ You can solder two wires on either side of the internal switch such that you get
 ## Installation and use
 
 Clone this repository:
-'''
+```
 git clone https://github.com/xtianbong/roger_game
-'''
+```
 
 Install prerequisites:
-'''
+```
 pip install -r requirements.txt
-'''
+```
 
 Run the app:
-'''
+```
 python gui.py
-'''
+```
 
 ## Notes
 BCM GPIO inputs (the buttons) are set to 13,19 and 26 by default. They can be changed in gui.py right under the impoorts.
