@@ -1,0 +1,11 @@
+Adafruit-DHT==1.4.0
+automationhat==0.2.0
+gpiozero==1.6.2
+guizero==1.1.1
+Pillow==8.1.2
+pygame==1.9.6
+RPi.GPIO==0.7.0
+scrollphat==0.0.7
+scrollphathd==1.2.1
+sense-hat==2.4.0
+
