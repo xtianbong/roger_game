@@ -1,3 +1,4 @@
+import RPi.GPIO as GPIO
 from servo import half_spin
 # Set the GPIO mode and pin
 servo_pin = 18
